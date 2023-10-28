@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    @apply bg-gradient-to-tr from-primary-500 to-primary-600
+  }
+
+  .gradient-white {
+    @apply bg-gradient-to-tr from-white to-gray-50
+  }
+
+  .input {
+    @apply bg-primary-500/10 outline-none rounded-lg p-3 caret-primary-500 w-full ring-1 ring-inset ring-transparent focus:ring-primary-500 focus:outline-none focus:invalid:ring-pink-500 invalid:text-pink-600 transition-all duration-300
+  }
+
+  .btn-primary{
+    @apply w-full text-sm text-white gradient-primary shadow-low  rounded-xl px-8 py-3
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #13151F;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #792CB9;
+  border-radius: 10px
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #49109D;
+}
+
+
+
+
+/* SLIDER */
+body {
+  min-height: 100vh;
+}
+
+.slider {
+  height: 60px;
+  position: relative;
+  width: 100%;
+
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.slider::before,
+.slider::after {
+  position: absolute;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  content: '';
+  height: 100%;
+  width: 25%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+html {
+  scroll-behavior: smooth;
+}
